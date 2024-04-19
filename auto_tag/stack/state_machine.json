@@ -1,0 +1,191 @@
+{
+  "StartAt": "File Validation",
+  "Comment": "Pipeline to split the data into chunks and process it batch by batch",
+  "States": {
+    "File Validation": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "{file_validation_arn}"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException",
+            "Lambda.TooManyRequestsException"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "Map State",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Prepare Notification"
+        }
+      ]
+    },
+    "Map State": {
+      "Type": "Map",
+      "ResultPath": "$.mapOutput",
+      "Next": "Get Extra Tag",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Prepare Notification"
+        }
+      ],
+      "ItemProcessor": {
+        "ProcessorConfig": {
+          "Mode": "DISTRIBUTED",
+          "ExecutionType": "EXPRESS"
+        },
+        "StartAt": "Invoke Bedrock And Save",
+        "States": {
+          "Invoke Bedrock And Save": {
+            "End": true,
+            "Retry": [
+              {
+                "ErrorEquals": [
+                  "Lambda.ClientExecutionTimeoutException",
+                  "Lambda.ServiceException",
+                  "Lambda.AWSLambdaException",
+                  "Lambda.SdkClientException"
+                ],
+                "IntervalSeconds": 2,
+                "MaxAttempts": 6,
+                "BackoffRate": 2
+              }
+            ],
+            "Type": "Task",
+            "OutputPath": "$.Payload",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "Parameters": {
+              "FunctionName": "{invoke_bedrock_and_save_arn}",
+              "Payload": {
+                "Items.$": "$.Items",
+                "ExecutionName.$": "$.BatchInput.ExecutionName"
+              }
+            }
+          }
+        }
+      },
+      "MaxConcurrency": 2,
+      "ItemBatcher": {
+        "MaxItemsPerBatch": 40,
+        "BatchInput": {
+          "ExecutionName.$": "$$.Execution.Name"
+        }
+      },
+      "ItemReader": {
+        "Resource": "arn:aws:states:::s3:getObject",
+        "ReaderConfig": {
+          "InputType": "CSV",
+          "CSVHeaderLocation": "FIRST_ROW"
+        },
+        "Parameters": {
+          "Bucket.$": "$.bucket",
+          "Key.$": "$.key"
+        }
+      }
+    },
+    "Get Extra Tag": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "FunctionName": "{post_processing_arn}",
+        "Payload": {
+          "MapData.$": "$",
+          "ExecutionName.$": "$$.Execution.Name"
+        }
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException",
+            "Lambda.TooManyRequestsException"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "Prepare Notification"
+    },
+    "Prepare Notification": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "{prepare_notification_arn}",
+        "Payload": {
+          "Result.$": "$",
+          "ExecutionName.$": "$$.Execution.Name"
+        }
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException",
+            "Lambda.TooManyRequestsException"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "Notification",
+      "OutputPath": "$.Payload"
+    },
+    "Notification": {
+      "Next": "Has Exception",
+      "Type": "Task",
+      "Resource": "arn:aws:states:::aws-sdk:sns:publish",
+      "Parameters": {
+        "TopicArn": "{sns_topic_arn}",
+        "Message.$": "$.message",
+        "Subject.$": "$.subject"
+      },
+      "ResultPath": "$.sns_message",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Fail"
+        }
+      ]
+    },
+    "Has Exception": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.state",
+          "BooleanEquals": false,
+          "Next": "Fail"
+        }
+      ],
+      "Default": "Success"
+    },
+    "Fail": {
+      "Type": "Fail"
+    },
+    "Success": {
+      "Type": "Succeed"
+    }
+  }
+}

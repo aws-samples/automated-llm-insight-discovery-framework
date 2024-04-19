@@ -1,4 +1,4 @@
-## My Project
+## Automated LLM Insight Discovery Framework
 
 TODO: Fill this README out!
 
