@@ -5,6 +5,8 @@ Welcome to the GitHub repository for our prototype project. This guide provides 
 ### Getting Started
 Please follow these steps to prepare your system for deploying the prototype.
 
+The deployment process outlined below is specifically designed for the `us-east-1` region.
+
 #### Prerequisites
 
 Before beginning the deployment, ensure you meet the following prerequisites:
