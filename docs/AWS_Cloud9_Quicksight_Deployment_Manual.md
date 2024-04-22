@@ -29,7 +29,6 @@ Before beginning the deployment, ensure you meet the following prerequisites:
   - Sign up for AWS Quicksight by following the guide here.
   - Navigate to Manage QuickSight in the Quicksight console, then select Security and Permissions.
   - Verify that the two default roles required by the Quicksight system are present in the IAM console.
-  Setting Up Cloud9 as Deployment
 
 
 #### Setting Up Cloud9 as Deployment Environment
@@ -37,7 +36,7 @@ Cloud9 provides a pre-configured environment that simplifies the deployment proc
 
 - Log into the AWS Management Console and access the AWS Cloud9 service.
 - Click on "Create environment" and enter "cdk-deployment-env" as the name for your new environment.
-Select "Amazon Linux 2" as the platform and choose an instance type (e.g., m5.xlarge for optimal performance).
+Select **"Ubuntu Server 22.04 LTS"** as the platform and choose an instance type (e.g., m5.xlarge for optimal performance).
 - Configure additional settings such as VPC and subnet if necessary, ideally selecting us-east-1d for the subnet.
 
 Once configured, launch the environment by clicking on "Create environment".
@@ -53,19 +52,6 @@ for example : Resize Cloud9 Volume to 50G
 ```commandline
 source <(curl -s https://raw.githubusercontent.com/aws-samples/aws-swb-cloud9-init/mainline/cloud9-resize.sh)
 ```
-- Upgrade Python to version 3.12 and set up the necessary environment
-```commandline
-sudo yum update -y
-sudo yum erase openssl-devel -y
-sudo yum install openssl11 openssl11-devel  libffi-devel bzip2-devel wget -y
-wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
-tar -xf Python-3.12.2.tgz
-cd Python-3.12.2/
-./configure --prefix=/usr --enable-optimizations
-make -j $(nproc)
-sudo make altinstall
-python3.12 -V
-```
 
 - Set up projen
 ```commandline
@@ -78,11 +64,12 @@ git clone git@github.com:aws-samples/automated-llm-insight-discovery-framework.g
 cd automated-llm-insight-discovery-framework
 
 # Setup and activate Python environment
-python3.12 -m venv .env
+python -m venv .env
 source .env/bin/activate
 ```
 
 - Package lambda layers
+We request that Python version 3.12 be used due to its compatibility with the latest Lambda container.
 ```commandline
 cd auto_tag/lambda_layers/third-party
 pip3 install -r requirements.txt --platform manylinux2014_x86_64 --only-binary=:all: --implementation cp --target=python/ --upgrade --python-version 3.12
@@ -92,10 +79,11 @@ zip -r layer.zip python/
 - CDK deploy
 ```commandline
 cd ~/environment/automated-llm-insight-discovery-framework
-# If you never use cdk in this region
-cdk bootstrap
+pip install projen
+
 # Initialize and deploy the project
 npx projen build
+cdk bootstrap
 cdk deploy
 ```
 
