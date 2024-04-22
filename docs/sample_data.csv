@@ -1,0 +1,158 @@
+product_name,store,id,stars,title,feedback,date
+Cloud Cam,Store_A,1,2,App crashes constantly,The app crashes every time I try to view the live feed. It's frustrating and makes the camera useless. Please fix this issue ASAP.,2/3/2024 14:32
+Cloud Cam,Store_B,2,1,Cannot connect to camera,"I've been trying to connect to my camera through the app for hours, but it keeps failing. The app is not user-friendly at all. Disappointed with this product.",5/3/2024 9:15
+Cloud Cam,Store_C,3,3,Laggy video feed,"While the app manages to connect to the camera, the video feed is extremely laggy and stutters constantly. It's hard to make out any details in the footage.",7/3/2024 19:45
+Cloud Cam,Store_D,4,2,App drains phone battery,"Ever since I installed this app, my phone's battery drains incredibly fast. It's not practical to use the app if it means I can't use my phone for the rest of the day.",10/3/2024 8:22
+Cloud Cam,Store_E,5,1,Live feed not working,"The live feed feature in the app hasn't been working for days. I can't monitor my home in real-time, which defeats the purpose of having a security camera.",12/3/2024 16:59
+Cloud Cam,Store_A,6,2,Poor app performance,"The app is slow, unresponsive, and crashes frequently. It's a hassle to use and makes me regret purchasing this camera.",15/3/2024 11:43
+Cloud Cam,Store_B,7,1,App update broke features,"After the latest app update, I can no longer access my camera's settings or view recorded footage. The update has rendered the app useless.",19/3/2024 20:07
+Cloud Cam,Store_C,8,3,Inconsistent notifications,"The app sends notifications for motion detection inconsistently. Sometimes I receive alerts, other times I don't, even when there's clearly movement on the camera.",22/3/2024 13:26
+Cloud Cam,Store_D,9,2,Difficult to navigate app,"The app's interface is confusing and difficult to navigate. It takes too long to find the features I need, and the layout is not intuitive.",25/3/2024 18:09
+Cloud Cam,Store_E,10,1,App won't stay logged in,"The app logs me out every time I close it, forcing me to enter my credentials each time I want to view my camera. It's annoying and wastes my time.",28/3/2024 7:51
+Cloud Cam,Store_A,11,2,Glitchy live stream,The live stream in the app is constantly glitching and freezing. It's impossible to get a clear view of what's happening on the camera.,1/3/2024 12:14
+Cloud Cam,Store_B,12,1,App doesn't load,"Half the time, the app doesn't even load. It gets stuck on the loading screen, and I have to force close it and try again.",3/3/2024 17:38
+Cloud Cam,Store_C,13,3,Poor video quality in app,"Even when the live feed works, the video quality in the app is terrible. The footage is pixelated and blurry, making it hard to see details.",6/3/2024 8:52
+Cloud Cam,Store_D,14,2,App not compatible with older phones,"I have an older phone, and the app isn't compatible with it. I can't use the camera I paid for because the app won't work on my device.",9/3/2024 14:27
+Cloud Cam,Store_E,15,1,Constant app crashes,The app crashes at least once every time I use it. It's frustrating and makes me not want to bother checking my camera.,11/3/2024 21:03
+Cloud Cam,Store_A,16,2,Slow to load live feed,"It takes forever for the live feed to load in the app. By the time it finally shows up, I've missed whatever I was trying to see.",14/3/2024 10:16
+Cloud Cam,Store_B,17,1,App uses too much data,"The app uses a ridiculous amount of data, even when I'm not actively using it. It's eating up my monthly data allowance.",17/3/2024 15:49
+Cloud Cam,Store_C,18,3,No app support,"I've tried reaching out to customer support about issues with the app, but I never get a response. It's like they don't care about their customers.",20/3/2024 7:35
+Cloud Cam,Store_D,19,2,App doesn't send notifications,"The app is supposed to send notifications when motion is detected, but I never receive any alerts. It defeats the purpose of having a security camera.",23/3/2024 19:58
+Cloud Cam,Store_E,20,1,Buggy app,"The app is full of bugs and glitches. It's clear that it wasn't properly tested before release, and now customers are suffering.",26/3/2024 12:42
+Cloud Cam,Store_A,21,2,Incorrect timestamps on recordings,The timestamps on the recorded footage in the app are incorrect. It makes it difficult to know when events actually occurred.,29/3/2024 16:25
+Cloud Cam,Store_B,22,1,App drains phone battery quickly,"The app drains my phone's battery incredibly fast, even when it's not actively being used. It's not practical to have the app installed.",4/3/2024 9:11
+Cloud Cam,Store_C,23,3,Poor app performance after update,"Ever since the app update, the performance has been terrible. It's slow, glitchy, and crashes more often than before.",8/3/2024 14:53
+Cloud Cam,Store_D,24,2,Difficult to navigate app interface,The app's interface is confusing and not user-friendly. It's hard to find the settings and features I need.,13/3/2024 18:36
+Cloud Cam,Store_E,25,1,Live feed constantly buffers,"The live feed in the app constantly buffers and freezes. It's impossible to get a smooth, uninterrupted view of what's happening.",16/3/2024 11:29
+Cloud Cam,Store_A,26,2,App not receiving updates,"The app hasn't received any updates in months, despite numerous bugs and issues that need fixing. It feels like the company has abandoned this product.",21/3/2024 8:02
+Cloud Cam,Store_B,27,1,Connection issues with app,"The app frequently has trouble connecting to the camera, even when my internet connection is strong. It's unreliable and frustrating.",24/3/2024 15:45
+Cloud Cam,Store_C,28,3,App missing features,"The app is missing basic features that similar products have, like the ability to download and share recordings. It feels incomplete.",27/3/2024 20:19
+Cloud Cam,Store_D,29,2,No manual recording option in app,"The app doesn't have a manual recording option, so I can't record footage when I want to. It limits the usefulness of the camera.",30/3/2024 12:53
+Cloud Cam,Store_E,30,1,App crashes when viewing recordings,"Whenever I try to view recorded footage in the app, it crashes. I can't access any of my recordings, which makes the camera pointless.",31/3/2024 17:36
+Cloud Cam,Store_A,31,1,Cloud backup not working,"I've been trying to access my cloud backup for days, but it keeps saying it's unavailable. What's the point of having a backup if I can't view it?",3/3/2024 10:15
+Cloud Cam,Store_B,32,2,Slow cloud backup,The cloud backup is extremely slow. It takes hours to upload just a few minutes of footage. This is unacceptable.,5/3/2024 14:30
+Cloud Cam,Store_C,33,1,Cloud backup failed,"My cloud backup failed, and I lost all my footage from the past week. This is a major problem and needs to be fixed immediately.",7/3/2024 18:45
+Cloud Cam,Store_D,34,3,Inconsistent cloud backup,"The cloud backup is inconsistent. Sometimes it works, sometimes it doesn't. I can't rely on it to keep my footage safe.",9/3/2024 9:20
+Cloud Cam,Store_E,35,2,Cloud backup not syncing,The cloud backup isn't syncing properly with my camera. I'm missing footage and can't trust that everything is being backed up.,11/3/2024 13:05
+Cloud Cam,Store_A,36,1,Cannot access cloud backup,I can't access my cloud backup at all. It keeps giving me an error message. This is unacceptable for a product that's supposed to provide reliable cloud storage.,13/3/2024 16:50
+Cloud Cam,Store_B,37,2,Cloud backup not uploading,The cloud backup hasn't been uploading any new footage for days. I'm worried that I'm going to lose important recordings.,15/3/2024 20:35
+Cloud Cam,Store_C,38,1,Cloud backup deleted footage,"I had important footage saved in my cloud backup, but it somehow got deleted. This is a major security concern.",17/3/2024 11:40
+Cloud Cam,Store_D,39,3,Cloud backup not accessible,I can't access my cloud backup from the app or the website. It's frustrating and defeats the purpose of having a backup.,19/3/2024 15:25
+Cloud Cam,Store_E,40,2,Cloud backup not reliable,The cloud backup is not reliable at all. It's constantly failing or losing footage. I can't trust it to keep my recordings safe.,21/3/2024 19:10
+Cloud Cam,Store_A,41,1,Cloud backup not working after update,"Ever since the update, the cloud backup hasn't been working at all. I've lost footage and can't access anything. This needs to be fixed ASAP.",23/3/2024 10:55
+Cloud Cam,Store_B,42,2,Cloud backup not saving footage,The cloud backup isn't saving my footage consistently. I'll go to view a recording and it's not there. It's like it never got backed up in the first place.,25/3/2024 14:40
+Cloud Cam,Store_C,43,1,Lost footage in cloud backup,"I had hours of important footage saved in my cloud backup, but it's all gone now. The backup failed and I've lost everything.",27/3/2024 18:25
+Cloud Cam,Store_D,44,3,Cloud backup not syncing,The cloud backup is not syncing with my camera consistently. I'll view my backup and it's missing footage that should be there.,29/3/2024 9:30
+Cloud Cam,Store_E,45,2,Cloud backup upload errors,I keep getting errors when trying to upload footage to the cloud backup. It's hit or miss whether it actually works.,31/3/2024 13:15
+Cloud Cam,Store_A,46,1,Cloud backup not accessible,"I haven't been able to access my cloud backup for weeks. It keeps saying it's unavailable, no matter what I do.",2/3/2024 16:20
+Cloud Cam,Store_B,47,2,Slow cloud backup speeds,The upload speeds for the cloud backup are painfully slow. It takes forever to back up even a short clip.,4/3/2024 20:05
+Cloud Cam,Store_C,48,1,Cloud backup failed to save footage,The cloud backup failed to save an important recording. I've lost footage that I can't get back.,6/3/2024 11:50
+Cloud Cam,Store_D,49,3,Inconsistent cloud backup performance,"The performance of the cloud backup is inconsistent. Sometimes it works fine, other times it's slow or fails entirely.",8/3/2024 15:35
+Cloud Cam,Store_E,50,2,Cloud backup not backing up,The cloud backup hasn't been backing up my footage for days. I'm missing recordings and have no idea why.,10/3/2024 19:20
+Cloud Cam,Store_A,51,1,Cannot view cloud backup,I can't view my cloud backup at all. It just gives me an error message every time I try.,12/3/2024 10:25
+Cloud Cam,Store_B,52,2,Cloud backup not syncing properly,The cloud backup is not syncing properly with my camera. It's missing footage and I can't rely on it.,14/3/2024 14:10
+Cloud Cam,Store_C,53,1,Lost footage in cloud backup,I've lost important footage that was supposed to be saved in the cloud backup. This is unacceptable.,16/3/2024 17:55
+Cloud Cam,Store_D,54,3,Cloud backup not working consistently,"The cloud backup works sometimes, but not consistently. I never know if my footage is actually being backed up.",18/3/2024 9:00
+Cloud Cam,Store_E,55,2,Cloud backup upload failures,I frequently get upload failures when trying to back up my footage to the cloud. It's frustrating and unreliable.,20/3/2024 12:45
+Cloud Cam,Store_A,56,1,Cloud backup not accessible after update,"After the update, I can't access my cloud backup at all. This is a major problem that needs to be fixed immediately.",22/3/2024 16:30
+Cloud Cam,Store_B,57,2,Slow cloud backup performance,The performance of the cloud backup is too slow. It takes forever to upload and download footage.,24/3/2024 20:15
+Cloud Cam,Store_C,58,1,Cloud backup deleted my footage,The cloud backup deleted my footage for no reason. I've lost important recordings and have no idea why.,26/3/2024 11:20
+Cloud Cam,Store_D,59,3,Cloud backup not reliable,I can't rely on the cloud backup to keep my footage safe. It's constantly failing or losing recordings.,28/3/2024 15:05
+Cloud Cam,Store_E,60,2,Cloud backup not syncing with camera,The cloud backup is not syncing properly with my camera. It's missing footage and I can't trust it.,30/3/2024 18:50
+Cloud Cam,Store_A,61,1,Payment not going through,"I've been trying to purchase this camera for hours, but the payment keeps getting declined. Fix your payment system!",1/3/2024 9:30
+Cloud Cam,Store_B,62,2,Overcharged for the product,I was charged twice for the same camera. Now I have to go through the hassle of getting a refund. Unacceptable.,3/3/2024 12:15
+Cloud Cam,Store_C,63,1,Payment system down,The payment system is completely down. I can't purchase the camera at all. What a waste of time.,5/3/2024 15:45
+Cloud Cam,Store_D,64,3,Incorrect payment amount,The payment page is showing the wrong price for the camera. It's much higher than advertised. False advertising?,7/3/2024 18:20
+Cloud Cam,Store_E,65,2,Payment not secure,I don't feel comfortable entering my payment information. The website doesn't seem secure. I'll buy elsewhere.,9/3/2024 10:55
+Cloud Cam,Store_A,66,1,Cannot complete payment,"No matter what I do, I can't complete the payment for this camera. The website just keeps giving me errors.",11/3/2024 14:30
+Cloud Cam,Store_B,67,2,Charged for canceled order,"I canceled my order for the camera, but I was still charged. Now I have to dispute the charge with my bank.",13/3/2024 17:05
+Cloud Cam,Store_C,68,1,Payment system glitchy,The payment system is glitchy and keeps freezing. I've had to restart the process multiple times.,15/3/2024 19:40
+Cloud Cam,Store_D,69,3,Incorrect sales tax charged,The sales tax charged at checkout is incorrect. It's way higher than it should be. What's going on?,17/3/2024 11:25
+Cloud Cam,Store_E,70,2,Cannot apply discount code,"I have a valid discount code, but the payment page won't let me apply it. I'm not paying full price.",19/3/2024 14:10
+Cloud Cam,Store_A,71,1,Payment declined for no reason,My payment keeps getting declined for no reason. I have sufficient funds. This is ridiculous.,21/3/2024 16:55
+Cloud Cam,Store_B,72,2,Overcharged for shipping,The payment page is showing an outrageous shipping fee. It's more than the cost of the camera!,23/3/2024 9:50
+Cloud Cam,Store_C,73,1,Payment page not loading,The payment page won't even load. I've tried on multiple devices. How am I supposed to buy this camera?,25/3/2024 12:35
+Cloud Cam,Store_D,74,3,Incorrect currency displayed,The payment page is displaying the wrong currency. I'm not paying in a foreign currency.,27/3/2024 15:20
+Cloud Cam,Store_E,75,2,Cannot enter payment details,I can't enter my payment details on the checkout page. The fields are not clickable. Fix your website.,29/3/2024 18:05
+Cloud Cam,Store_A,76,1,Payment processing error,I keep getting a payment processing error when I try to check out. This is unacceptable.,2/3/2024 10:00
+Cloud Cam,Store_B,77,2,Charged wrong amount,I was charged the wrong amount for the camera. It's more than what was advertised. False advertising!,4/3/2024 13:45
+Cloud Cam,Store_C,78,1,Payment system not working,The payment system is not working at all. I can't even enter my information. What a joke.,6/3/2024 16:30
+Cloud Cam,Store_D,79,3,Sales tax calculation wrong,The sales tax calculation is wrong on the payment page. It's charging me too much.,8/3/2024 19:15
+Cloud Cam,Store_E,80,2,Unsecured payment page,The payment page doesn't look secure. I'm not risking my credit card information.,10/3/2024 11:20
+Cloud Cam,Store_A,81,1,Payment won't go through,"I've tried multiple times, but the payment just won't go through. What's the problem?",12/3/2024 14:05
+Cloud Cam,Store_B,82,2,Double charged for camera,I was double charged for the camera. Now I have to waste my time getting a refund.,14/3/2024 16:50
+Cloud Cam,Store_C,83,1,Payment page crashes,"Every time I try to checkout, the payment page crashes. I can't complete my purchase.",16/3/2024 9:35
+Cloud Cam,Store_D,84,3,Incorrect shipping estimate,The payment page is showing an incorrect shipping estimate. It's much longer than promised.,18/3/2024 12:10
+Cloud Cam,Store_E,85,2,Cannot use gift card,"I have a gift card, but the payment page won't let me apply it. What's the point of having one?",20/3/2024 14:55
+Cloud Cam,Store_A,86,1,Payment system down again,The payment system is down again. This is the third time I've tried to buy this camera.,22/3/2024 17:40
+Cloud Cam,Store_B,87,2,Overcharged for taxes,The payment page is charging way too much for taxes. It's more than the legal amount.,24/3/2024 10:35
+Cloud Cam,Store_C,88,1,Cannot complete transaction,I cannot complete the transaction on the payment page. It just keeps loading forever.,26/3/2024 13:20
+Cloud Cam,Store_D,89,3,Wrong payment amount shown,The payment amount shown on the checkout page is wrong. It's higher than the listed price.,28/3/2024 16:05
+Cloud Cam,Store_E,90,2,Unsecured payment gateway,The payment gateway doesn't seem secure. I don't trust it with my financial information.,30/3/2024 18:50
+Cloud Cam,Store_A,91,1,Package never arrived,I ordered this camera weeks ago and the package still hasn't arrived. Customer service is no help.,3/3/2024 14:20
+Cloud Cam,Store_B,92,2,Damaged packaging,The package arrived damaged and the camera inside was broken. Poor packaging and handling.,7/3/2024 10:15
+Cloud Cam,Store_C,93,1,Wrong item shipped,"I received the wrong item in my package. I ordered the camera, but got something else entirely.",12/3/2024 16:45
+Cloud Cam,Store_D,94,3,Delayed shipment,My package was delayed multiple times. It took forever to arrive and I needed the camera urgently.,15/3/2024 9:30
+Cloud Cam,Store_E,95,2,Package left in rain,The delivery driver left my package in the rain. The box was soaked and the camera inside was damaged.,19/3/2024 13:10
+Cloud Cam,Store_A,96,1,Lost in transit,My package was lost in transit. I never received my camera and no one can tell me where it is.,22/3/2024 17:55
+Cloud Cam,Store_B,97,2,Incorrect tracking information,"The tracking information for my package is incorrect. It shows delivered, but I never received it.",25/3/2024 11:40
+Cloud Cam,Store_C,98,1,No tracking updates,I haven't received any tracking updates for my package. I have no idea when or if I'll receive my camera.,28/3/2024 15:25
+Cloud Cam,Store_D,99,3,Slow shipping,The shipping for this camera is incredibly slow. It's been days and my package hasn't even left the warehouse.,30/3/2024 8:50
+Cloud Cam,Store_E,100,2,Poor packaging,The packaging for the camera was poor. The box arrived dented and the camera inside was scratched.,31/3/2024 12:35
+Cloud Cam,Store_A,101,1,Camera stopped working,The camera suddenly stopped working after just a week of use. It won't turn on at all. Seems like a hardware failure.,2/3/2024 14:30
+Cloud Cam,Store_B,102,2,Lens got stuck,The lens got stuck in the extended position and won't retract back into the camera body. Hardware issue.,5/3/2024 9:15
+Cloud Cam,Store_C,103,1,Overheating problem,The camera gets extremely hot during operation and shuts down due to overheating. Definitely a hardware problem.,7/3/2024 18:45
+Cloud Cam,Store_D,104,2,Blurry images,The camera is producing blurry images. I think there's an issue with the lens or image sensor.,10/3/2024 11:00
+Cloud Cam,Store_E,105,1,Faulty microphone,The built-in microphone stopped working after a few days. It's a hardware failure.,12/3/2024 16:20
+Cloud Cam,Store_A,106,2,Camera won't connect,The camera fails to connect to the app. Might be a hardware issue with the Wi-Fi module.,15/3/2024 8:10
+Cloud Cam,Store_B,107,1,Battery drains quickly,"The battery drains very quickly, even when the camera is not in use. Seems like a faulty battery.",17/3/2024 21:00
+Cloud Cam,Store_C,108,1,Camera resets randomly,The camera keeps resetting itself randomly. It's frustrating and points to a hardware problem.,20/3/2024 13:30
+Cloud Cam,Store_D,109,2,Night vision not working,The night vision feature stopped working. The infrared LEDs might be faulty.,23/3/2024 19:45
+Cloud Cam,Store_E,110,1,Camera housing cracked,The camera housing cracked open after a minor fall. Poor build quality and hardware issue.,26/3/2024 10:15
+Cloud Cam,Store_A,111,2,SD card not detected,The camera fails to detect the SD card. Might be an issue with the card slot.,29/3/2024 15:00
+Cloud Cam,Store_B,112,1,Faulty power adapter,The power adapter stopped working after a few days. It's a hardware failure.,31/3/2024 22:30
+Cloud Cam,Store_C,113,1,Camera overheats quickly,The camera overheats and shuts down within minutes of use. It's a serious hardware issue.,3/3/2024 11:45
+Cloud Cam,Store_D,114,2,Buttons not responding,The buttons on the camera are not responding. Seems like a hardware problem with the button mechanism.,6/3/2024 17:20
+Cloud Cam,Store_E,115,1,Distorted audio,The audio recorded by the camera is distorted and unclear. Likely a hardware issue with the audio processor.,9/3/2024 8:30
+Cloud Cam,Store_A,116,2,Faulty motion sensor,The motion sensor is not triggering the camera to record. It's a hardware failure.,13/3/2024 14:00
+Cloud Cam,Store_B,117,1,Camera freezes frequently,The camera freezes frequently during operation. It's a frustrating hardware problem.,16/3/2024 19:15
+Cloud Cam,Store_C,118,1,Loose connection,"There's a loose connection inside the camera, causing intermittent power issues. Definitely a hardware fault.",19/3/2024 10:50
+Cloud Cam,Store_D,119,2,Faulty USB port,"The USB port on the camera is not working, making it impossible to transfer files. Hardware issue.",22/3/2024 16:30
+Cloud Cam,Store_E,120,1,Camera shuts down randomly,The camera shuts down randomly during use. It's a hardware problem that needs to be addressed.,25/3/2024 9:00
+Cloud Cam,Store_A,121,2,Flickering screen,The camera's screen is flickering constantly. It's likely a hardware issue with the display.,28/3/2024 12:45
+Cloud Cam,Store_B,122,1,Faulty zoom mechanism,The zoom mechanism is not working smoothly. It gets stuck and makes grinding noises. Hardware failure.,30/3/2024 18:10
+Cloud Cam,Store_C,123,1,Camera won't charge,The camera won't charge at all. The charging port seems to be faulty.,1/3/2024 13:20
+Cloud Cam,Store_D,124,2,Overexposed images,The camera is producing overexposed images. There might be a hardware issue with the image sensor.,4/3/2024 9:40
+Cloud Cam,Store_E,125,1,Microphone picks up static,The microphone is picking up a lot of static noise. It's likely a hardware problem.,8/3/2024 16:55
+Cloud Cam,Store_A,126,2,Camera gets hot,The camera gets uncomfortably hot during use. It might be a hardware issue with the cooling system.,11/3/2024 11:10
+Cloud Cam,Store_B,127,1,Faulty night vision,The night vision feature is not working properly. The image is too dark. Likely a hardware failure.,14/3/2024 19:30
+Cloud Cam,Store_C,128,1,Camera won't turn off,"The camera won't turn off, even when I press the power button. Hardware issue.",18/3/2024 8:00
+Cloud Cam,Store_D,129,2,Loose lens cover,The lens cover keeps falling off. It seems to be a hardware design flaw.,21/3/2024 14:45
+Cloud Cam,Store_E,130,1,Battery not holding charge,The battery is not holding a charge for long. It drains quickly. Likely a faulty battery.,24/3/2024 17:25
+Cloud Cam,Store_A,131,2,Camera makes buzzing noise,The camera makes a constant buzzing noise during operation. It's annoying and points to a hardware problem.,27/3/2024 10:35
+Cloud Cam,Store_B,132,1,Faulty Wi-Fi antenna,The Wi-Fi connection keeps dropping. I think there's a problem with the Wi-Fi antenna.,30/3/2024 20:50
+Cloud Cam,Store_A,133,5,Great camera!,The camera works perfectly and the video quality is amazing. Very happy with my purchase.,2/3/2024 10:15
+Cloud Cam,Store_B,134,4,Easy to set up,Setting up the camera was a breeze. The app is user-friendly and the camera connected quickly.,4/3/2024 14:30
+Cloud Cam,Store_C,135,5,Excellent night vision,The night vision feature works incredibly well. I can see everything clearly even in complete darkness.,6/3/2024 19:45
+Cloud Cam,Store_D,136,4,Reliable backup,The cloud backup feature gives me peace of mind. I know my footage is always safe.,8/3/2024 12:00
+Cloud Cam,Store_E,137,5,Compact and sturdy,The camera is compact and well-built. It feels sturdy and durable.,10/3/2024 16:20
+Cloud Cam,Store_A,138,4,Great value for money,This camera offers great features at an affordable price. It's a great value for money.,12/3/2024 9:40
+Cloud Cam,Store_B,139,5,Smooth app performance,The app works smoothly and provides easy access to all the camera's features.,14/3/2024 13:55
+Cloud Cam,Store_C,140,4,Clear audio quality,The audio quality is crystal clear. I can hear everything perfectly.,16/3/2024 18:10
+Cloud Cam,Store_D,141,5,Wide viewing angle,"The camera has a wide viewing angle, allowing me to cover a large area with a single device.",18/3/2024 11:25
+Cloud Cam,Store_E,142,4,Responsive motion detection,The motion detection feature is very responsive and sends alerts promptly.,20/3/2024 15:40
+Cloud Cam,Store_A,143,5,Excellent customer support,I had a minor issue and the customer support team was very helpful and resolved it quickly.,22/3/2024 8:50
+Cloud Cam,Store_B,144,4,Convenient remote access,Being able to access the camera remotely through the app is incredibly convenient.,24/3/2024 14:05
+Cloud Cam,Store_C,145,5,High-quality streaming,The video streaming quality is impressive. There's no lag or buffering.,26/3/2024 17:20
+Cloud Cam,Store_D,146,4,Seamless cloud integration,The camera integrates seamlessly with the cloud backup service. It's hassle-free.,28/3/2024 10:35
+Cloud Cam,Store_E,147,5,Reliable performance,The camera has been performing reliably without any issues. I'm very satisfied.,30/3/2024 15:50
+Cloud Cam,Store_A,148,4,Excellent low-light performance,"The camera performs exceptionally well in low-light conditions, producing clear images.",19/3/2024 12:30
+Cloud Cam,Store_B,149,5,Intuitive app interface,The app interface is intuitive and easy to navigate. I can access all features quickly.,21/3/2024 16:45
+Cloud Cam,Store_C,150,4,Smooth pan and tilt,"The pan and tilt function is smooth and responsive, allowing me to adjust the camera's view easily.",23/3/2024 9:55
+Cloud Cam,Store_D,151,5,Great wireless range,The camera's wireless range is impressive. I can place it far from the router without losing connectivity.,25/3/2024 14:10
+Cloud Cam,Store_E,152,4,Fast and easy installation,Installing the camera was fast and easy. The included instructions were clear and helpful.,27/3/2024 18:25
+Cloud Cam,Store_A,153,1,Cloud backup not working at all,"I've been trying to get the cloud backup feature to work for days now, but it simply won't function. I've followed all the instructions provided, but the camera fails to upload any footage to the cloud. I've tried resetting the camera, reinstalling the app, and even contacted customer support, but nothing seems to resolve the issue. It's extremely frustrating, especially since the cloud backup was one of the main reasons I purchased this camera. I feel like I've wasted my money on a product that doesn't deliver on its promises.",2/3/2024 10:15
+Cloud Cam,Store_B,154,2,Intermittent cloud backup,"The cloud backup feature works sporadically, which is incredibly annoying. Sometimes it uploads the footage without any issues, but most of the time, it fails to initiate the backup process. When it does work, the upload speed is painfully slow, and it takes forever to backup even a short clip. I've tried troubleshooting the issue by ensuring a stable Wi-Fi connection and sufficient cloud storage space, but the problem persists. It's disappointing to have such an unreliable cloud backup feature on an otherwise decent camera.",5/3/2024 13:30
+Cloud Cam,Store_C,155,1,Cloud backup stops unexpectedly,"I've encountered a recurring issue where the cloud backup process stops abruptly without any warning or error message. The camera will be in the middle of uploading footage, and suddenly, the progress bar freezes, and the backup never completes. This issue happens randomly, and I can't seem to find a pattern or a trigger. I've lost valuable footage due to this problem, and it defeats the purpose of having a cloud backup feature if it can't reliably store my recordings. I'm extremely disappointed with this camera's performance.",8/3/2024 16:45
+Cloud Cam,Store_D,156,2,Backup fails to start,"I've been experiencing a frustrating issue where the cloud backup fails to start altogether. Whenever I try to initiate a backup manually or set up automatic backups, the camera shows an error message saying 'Backup failed to start'. I've ensured that the camera is connected to the internet and that there's enough space in my cloud storage account, but the issue persists. I've reached out to customer support, but their suggestions haven't helped resolve the problem. It's disheartening to have a camera with a dysfunctional cloud backup feature.",11/3/2024 9:20
+Cloud Cam,Store_E,157,1,Cloud backup not accessible,"Although the camera seems to be backing up footage to the cloud successfully, I cannot access any of the backed-up files. Whenever I try to view the recordings through the app or the web interface, I get an error message saying 'Backup not found' or 'Unable to retrieve backup'. It's as if the backups are being stored somewhere inaccessible. I've tried reaching out to customer support, but they haven't been helpful in resolving the issue. It's extremely frustrating to have a cloud backup feature that doesn't allow me to view my own footage.",14/3/2024 12:05
