@@ -87,6 +87,19 @@ cdk bootstrap
 cdk deploy
 ```
 
+- RDS Initialization
+Go to lambda console and find the function named  ***-InitDbScript, click the Test button
+
+You will get a response message if every works
+
+```json
+{
+"statusCode": 200,
+"body": "\"Table Set up is Done!\""
+}
+```
+
+
 - Quicksight Set secret manager
 Choose your user name on the application bar and then choose Manage QuickSight. Go to security and permissions tab, select the secret we create for the database connection.
 
