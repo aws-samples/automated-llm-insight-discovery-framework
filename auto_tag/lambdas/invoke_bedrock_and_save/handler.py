@@ -183,12 +183,12 @@ def lambda_handler(event, context):
             
             for item in event["Items"]:
                 try:
-                    feedback_comment = item.get("review", "")
+                    feedback_comment = item.get("feedback", "")
                     if not isinstance(feedback_comment, str) or not feedback_comment:
-                        raise ValueError("Invalid 'sentence' in event item.")
+                        raise ValueError("Invalid 'feedback' in event item.")
                     feedback_title = item.get("title", "")
                     result = get_tag_from_model(bedrock_runtime, feedback_title, feedback_comment, categories)
-                    tags, sentiment, summary = parse_content(result)
+                    tags= parse_content(result)
                     
                     # customer provide a timestamp format 2024-01-22T23:31:48 in date field
                     timestamp_str = item.get("date", None)
