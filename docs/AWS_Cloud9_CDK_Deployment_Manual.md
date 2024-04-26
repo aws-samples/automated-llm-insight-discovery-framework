@@ -100,24 +100,8 @@ You will get a response message if every works
 ```
 
 
-- Quicksight Set secret manager
-Choose your user name on the application bar and then choose Manage QuickSight. Go to security and permissions tab, select the secret we create for the database connection.
+### Upload the sample.csv and testing the end to end workflow
 
-![Quicksight Setting for secret](quicksight_setting.png "How to set the secrets in Quicksight")
-
-- Change the options to enable VpcConnection and DataSource
-
-open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource`
-
-```python
-"create_quicksight_vpc_rds_datasource": True,
-```
-
-Make the changes
-```commandline
-npx projen build
-cdk deploy
-```
 
 
 ### TroubleShooting
