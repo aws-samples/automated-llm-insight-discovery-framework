@@ -68,7 +68,7 @@ python -m venv .env
 source .env/bin/activate
 ```
 
-- Package lambda layers
+- Package lambda layers  
 We request that Python version 3.12 be used due to its compatibility with the latest Lambda container.
 ```commandline
 cd auto_tag/lambda_layers/third-party
@@ -87,7 +87,7 @@ cdk bootstrap
 cdk deploy
 ```
 
-- RDS Initialization
+- RDS Initialization  
 Go to lambda console and find the function named  ***-InitDbScript, click the Test button
 
 You will get a response message if every works
