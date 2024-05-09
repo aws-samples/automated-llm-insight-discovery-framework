@@ -7,8 +7,14 @@ Be sure to:
 * Change the title in this README
 * Edit your repository description on GitHub
 
-## Installation
+## Installation for workflow automation pipeline
 Please refer to [installation manual](docs/AWS_Cloud9_CDK_Deployment_Manual.md)
+
+![Step Function Execution](docs/stepfunction.png)
+
+## Installation for data visualization 
+
+Please refer to [installation manual](docs/AWS_Cloud9_Quicksight_Setup_Manual.md)
 
 
 ## Disclaimer: Use of Prompt Engineering Templates
