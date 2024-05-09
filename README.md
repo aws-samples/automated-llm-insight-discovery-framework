@@ -16,6 +16,7 @@ Please refer to [installation manual](docs/AWS_Cloud9_CDK_Deployment_Manual.md)
 
 Please refer to [installation manual](docs/AWS_Cloud9_Quicksight_Setup_Manual.md)
 
+![QuickSight illustration](docs/quicksight_category.png)
 
 ## Disclaimer: Use of Prompt Engineering Templates
 
