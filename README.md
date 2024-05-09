@@ -2,7 +2,7 @@
 
 LLMs have revolutionized the way we interact with and process natural language. With their ability to understand, generate, and analyze text, LLMs offer a wide range of possibilities across various domains and industries. This project explores how LLMs can be integrated into enterprise applications to harness their generative capabilities and drive better decision-making.
 
-### Key use-case scenario and components
+## Key use-case scenario and components
 
 - **Customer Feedback Categorization and Sentiment Classification**: Analyze customer comments and reviews to extract specific aspects and determine sentiment, enabling data-driven improvements in customer experience.
 - **Email Categorization for Customer Service**: Automatically categorize customer emails into predefined categories for efficient routing to appropriate departments or teams, improving response times and customer satisfaction.
@@ -11,28 +11,29 @@ LLMs have revolutionized the way we interact with and process natural language. 
 #### Workflow Orchestration
 This project utilizes AWS Step Functions to orchestrate the end-to-end workflow, including data preprocessing, LLM inference, post-processing, and user notification. For more details, refer to [the Workflow Orchestration documentation](docs/AWS_Cloud9_CDK_Deployment_Manual.md).
 
+![Step Function Execution](docs/stepfunction.png)
+
+
 #### LLM and Prompt Engineering
 Amazon Bedrock, a fully managed service that offers a choice of high-performing foundation models, is used to invoke LLMs in this project. Prompt engineering techniques are employed to craft effective prompts for specific tasks. 
 
 #### Visualization
 Amazon QuickSight, a cloud-powered business analytics service, is used to visualize the insights extracted from the processed data. Refer to the Visualization documentation for more details [the Visualization documentation for more details](docs/AWS_Cloud9_Quicksight_Setup_Manual.md).
 
-
+![QuickSight illustration](docs/quicksight_category.png)
 
 
 ## Getting Started
 
 
-### Installation for workflow automation pipeline
+#### Installation for workflow automation pipeline
 Please refer to [installation manual for workflow automation](docs/AWS_Cloud9_CDK_Deployment_Manual.md)
 
-![Step Function Execution](docs/stepfunction.png)
 
-### Installation for data visualization 
+#### Installation for data visualization 
 
 Please refer to [installation manual for data visualization](docs/AWS_Cloud9_Quicksight_Setup_Manual.md)
 
-![QuickSight illustration](docs/quicksight_category.png)
 
 ## Disclaimer: Use of Prompt Engineering Templates
 
