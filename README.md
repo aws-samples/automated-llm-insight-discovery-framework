@@ -7,6 +7,9 @@ Be sure to:
 * Change the title in this README
 * Edit your repository description on GitHub
 
+## Installation
+Please refer to [installation manual](docs/AWS_Cloud9_CDK_Deployment_Manual.md)
+
 
 ## Disclaimer: Use of Prompt Engineering Templates
 
