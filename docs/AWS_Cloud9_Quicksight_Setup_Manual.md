@@ -1,5 +1,5 @@
 ## GitHub Repository: Prototype Deployment Guide
-This is to 
+This is for data visualization in Quicksight.
 
 #### Prerequisites
 Please refer to [CDK installation guide](AWS_Cloud9_CDK_Deployment_Manual.md) for the installation guidance.
@@ -14,7 +14,7 @@ Choose your user name on the application bar and then choose Manage QuickSight. 
 - Change the options to enable VpcConnection and DataSource
 
 
-open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource`. In Cloud8 settings, you need to remove the “.*” in the Hidden File Pattern to view the file `.projenrc.py` in Cloud9 file tree.
+open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource`. In Cloud9 settings, you need to remove the “.*” in the Hidden File Pattern to view the file `.projenrc.py` in Cloud9 file tree.
 
 ![Cloud9 Settings for hidden files](Cloud9_reveal_hidden_files_settings.png "How to reveal the hidden files in Cloud9")
 
