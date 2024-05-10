@@ -81,7 +81,7 @@ zip -r layer.zip python/
 cd ~/environment/automated-llm-insight-discovery-framework
 pip install projen
 
-# Initialize and deploy the project
+# Initialize and deploy the project (the deployment will takes around 15~20 minutes)
 npx projen build
 cdk bootstrap
 cdk deploy
@@ -99,9 +99,19 @@ You will get a response message if every works
 }
 ```
 
+This Lambda function drops all existing tables and create new tables. We highly recommend that you modify the lambda_handler function immediately to prevent accidentally removing your data in RDS.
 
-### Upload the sample.csv and testing the end to end workflow
+### Upload the sample_data.csv and testing the end to end workflow
 
+- Get the S3 bucket name
+
+Go to CloudFormation stack customer-service-dev, find the value of key ResourceDataBucketName in its output.
+
+![S3 bucket name in CloudFormation output](CDK_installed_S3_bucket_in_CloudFormation.png "S3 bucket name")
+
+- Upload [sample_data.csv](sample_data.csv) to the bucket
+
+- Continue in the [Quicksight Setup](./AWS_Cloud9_Quicksight_Setup_Manual.md) to visualize the result.
 
 
 ### TroubleShooting

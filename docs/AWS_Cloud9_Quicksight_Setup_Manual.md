@@ -1,104 +1,10 @@
 ## GitHub Repository: Prototype Deployment Guide
-Welcome to the GitHub repository for our prototype project. This guide provides comprehensive instructions for deploying the prototype, setting up a deployment environment, and integrating AWS services to facilitate the deployment and operational processes.
-
-
-### Getting Started
-Please follow these steps to prepare your system for deploying the prototype.
-
-The deployment process outlined below is specifically designed for the `us-east-1` region.
+This is to 
 
 #### Prerequisites
+Please refer to [CDK installation guide](AWS_Cloud9_CDK_Deployment_Manual.md) for the installation guidance.
 
-Before beginning the deployment, ensure you meet the following prerequisites:
-
-- IAM Permissions: The IAM user or role used for the deployment should have sufficient permissions to access the following AWS services:
-    - IAM
-    - CloudFormation
-    - S3
-    - SSM Parameter Store
-    - RDS
-    - Lambda
-    - CloudWatch
-    - Secrets Manager
-    - VPC
-    - Cloud9
-- VPC Availability: Ensure that at least one additional VPC slot is available in your account, as the default limit is typically 5 VPCs per region.
-- Bedrock Model Setting: Verify your Bedrock model settings to ensure compatibility with the deployment.
-
-- Setting Up AWS Quicksight: For visualizing data and creating reports with AWS Quicksight, follow these steps:
-  - Sign up for AWS Quicksight by following the guide here.
-  - Navigate to Manage QuickSight in the Quicksight console, then select Security and Permissions.
-  - Verify that the two default roles required by the Quicksight system are present in the IAM console.
-
-
-#### Setting Up Cloud9 as Deployment Environment
-Cloud9 provides a pre-configured environment that simplifies the deployment process. Here's how to set it up:
-
-- Log into the AWS Management Console and access the AWS Cloud9 service.
-- Click on "Create environment" and enter "cdk-deployment-env" as the name for your new environment.
-Select **"Ubuntu Server 22.04 LTS"** as the platform and choose an instance type (e.g., m5.xlarge for optimal performance).
-- Configure additional settings such as VPC and subnet if necessary, ideally selecting us-east-1d for the subnet.
-
-Once configured, launch the environment by clicking on "Create environment".
-
-
-### Deploy with AWS CDK
-
-Follow these steps to deploy the prototype using the AWS Cloud Development Kit (CDK):
-
-- Access the Cloud9 environment and open the terminal.
-- Resize the EBS volume for your environment:
-for example : Resize Cloud9 Volume to 50G
-```commandline
-source <(curl -s https://raw.githubusercontent.com/aws-samples/aws-swb-cloud9-init/mainline/cloud9-resize.sh)
-```
-
-- Set up projen
-```commandline
-node -v
-npm install -g projen
-```
-- Prepare your environment
-```commandline
-git clone git@github.com:aws-samples/automated-llm-insight-discovery-framework.git
-cd automated-llm-insight-discovery-framework
-
-# Setup and activate Python environment
-python -m venv .env
-source .env/bin/activate
-```
-
-- Package lambda layers
-We request that Python version 3.12 be used due to its compatibility with the latest Lambda container.
-```commandline
-cd auto_tag/lambda_layers/third-party
-pip3 install -r requirements.txt --platform manylinux2014_x86_64 --only-binary=:all: --implementation cp --target=python/ --upgrade --python-version 3.12
-zip -r layer.zip python/
-```
-
-- CDK deploy
-```commandline
-cd ~/environment/automated-llm-insight-discovery-framework
-pip install projen
-
-# Initialize and deploy the project
-npx projen build
-cdk bootstrap
-cdk deploy
-```
-
-- RDS Initialization
-Go to lambda console and find the function named  ***-InitDbScript, click the Test button
-
-You will get a response message if every works
-
-```json
-{
-"statusCode": 200,
-"body": "\"Table Set up is Done!\""
-}
-```
-
+#### Quicksight Configuration
 
 - Quicksight Set secret manager
 Choose your user name on the application bar and then choose Manage QuickSight. Go to security and permissions tab, select the secret we create for the database connection.
@@ -107,17 +13,63 @@ Choose your user name on the application bar and then choose Manage QuickSight. 
 
 - Change the options to enable VpcConnection and DataSource
 
-open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource`
+
+open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource`. In Cloud8 settings, you need to remove the “.*” in the Hidden File Pattern to view the file `.projenrc.py` in Cloud9 file tree.
+
+![Cloud9 Settings for hidden files](Cloud9_reveal_hidden_files_settings.png "How to reveal the hidden files in Cloud9")
 
 ```python
 "create_quicksight_vpc_rds_datasource": True,
 ```
 
-Make the changes
+Make the changes (the deployment will takes around 3~4 minutes)
 ```commandline
 npx projen build
 cdk deploy
 ```
+
+#### Create Data Source and Tables in Quicksight
+
+- Data Preparation - Creating a Dataset
+Find the RDS Database Secrets in CloudFormation:
+![CloudFormation RDS credential](./CDK_installed_secrets_in_CloudFormation.png "CloudFormation RDS credential")
+Find the RDS Database Secrets values in AWS Secrets Manager:
+![CloudFormation RDS credential value](./CDK_installed_secrets_in_CloudFormation2.png "CloudFormation RDS credential value")
+
+From the left navigation bar, select Datasets, click New dataset:
+![Quicksight Creating a Dataset](./quicksight_create_dataset2.png "Quicksight Creating a Dataset")
+
+![Quicksight Creating a new Dataset](./quicksight_create_dataset3.png "Quicksight Creating a new Dataset")
+
+Use custom SQL and Edit/Preview data:
+![Quicksight Use custom SQL](./quicksight_create_dataset4.png "Quicksight Use custom SQL")
+
+![Quicksight Edit/Preview data ](./quicksight_create_dataset5.png "Quicksight Edit/Preview data ")
+
+Give Custom SQL name (e.g. customer_feedback_filtered) and use Custom SQL below:
+
+```
+SELECT x.*
+FROM (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY ref_id ORDER BY last_updated_time DESC) AS rn
+  FROM customer_feedback
+) x
+WHERE x.rn = 1
+```
+
+![Quicksight publish data ](./quicksight_create_dataset6.png "Quicksight publish data ")
+
+- Data Visualization
+You can create new analysis:
+![Quicksight create analysis ](./quicksight_create_analysis.png "Quicksight create analysis ")
+
+Create a new calculated field to handle the integration logic of label_llm and label_post_processing.
+![Quicksight create field ](./quicksight_create_calculated_field.png "Quicksight create field ")
+
+![Quicksight create field 2](./quicksight_create_calculated_field2.png "Quicksight create field 2")
+
+Then you should see a new field in Data. Select llm_label_config and choose Donut Chart. You can see the chart:
+![Quicksight create donut chart](./quicksight_create_analysis_donut.png "Quicksight create donut chart")
 
 
 ### TroubleShooting
