@@ -70,4 +70,4 @@ Create a new calculated field to handle the integration logic of label_llm and l
 Then you should see a new field in Data. Select llm_label_config and choose Donut Chart. You can see the chart:
 ![Quicksight create donut chart](./quicksight_create_analysis_donut.png "Quicksight create donut chart")
 
-You can following the [Visualizing data in Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html) for more chart and analysis skills in Quicksight.
+You can follow the [Visualizing data in Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html) for more chart and analysis skills in Quicksight.
