@@ -71,22 +71,3 @@ Then you should see a new field in Data. Select llm_label_config and choose Donu
 ![Quicksight create donut chart](./quicksight_create_analysis_donut.png "Quicksight create donut chart")
 
 You can following the [Visualizing data in Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html) for more chart and analysis skills in Quicksight.
-
-### TroubleShooting
-
-1. Deployment in other region
-
-AWS Lambda layers ARN can vary by region, and for the purpose of this proof of concept (POC), we are utilizing a layer that includes the pandas library.
-
-For example for us-west-2, you need to use 
-```python
-arn:aws:lambda:us-west-2:336392948345:layer:AWSSDKPandas-Python312:6
-```
-
-please open the file `.projenrc.py` and modify the parameter  `sdk_pandas_layer` 
-
-Please check your region here. https://aws-sdk-pandas.readthedocs.io/en/stable/layers.html
-
-
-
-
