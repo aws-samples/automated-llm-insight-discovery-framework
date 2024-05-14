@@ -99,7 +99,26 @@ You will get a response message if every works
 }
 ```
 
-This Lambda function drops all existing tables and create new tables. We highly recommend that you modify the lambda_handler function immediately to prevent accidentally removing your data in RDS.
+This Lambda function drops all existing tables and create new tables. We highly recommend that you modify the lambda_handler function immediately to prevent accidentally removing your data in RDS. 
+
+The table customer_feedback will be created by the statement below:
+```
+CREATE TABLE customer_feedback (
+        id SERIAL PRIMARY KEY,
+        product_name VARCHAR(255),
+        store VARCHAR(20),
+        ref_id VARCHAR(100),
+        stars VARCHAR(5),
+        title VARCHAR(255),
+        feedback TEXT NOT NULL,
+        label_llm VARCHAR(255),
+        create_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        last_updated_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        label_post_processing VARCHAR(255),
+        label_correction VARCHAR(255),
+        execution_id TEXT
+    );
+```
 
 ### Upload the sample_data.csv to test the end to end workflow
 
