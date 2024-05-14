@@ -14,11 +14,11 @@ Following is the architecture
 ![Architecture](docs/LLM_Auto_Tag_architeccture.png)
 
 The data flow is as below:
-1. User upload CSV file of user feedback to S3 bucket, where the default CSV file format is product_name,store,id,stars,title,feedback,date. You can find more from the [sample CSV file](docs/sample_data.csv).
-1. The S3 data event will trigger a step function. You can find more in the Workflow Orchestration session below.
-1. The Lambda function customer-service-dev-InvokeBedrockAndSave in step function will extract the feedback from CSV, invoke the Amazon Bedrock LLM to categorize them. Please find more in the LLM and Prompt Engineering session below.
+1. User upload CSV file of user feedback to S3 bucket, where the default CSV file format is `product_name,store,id,stars,title,feedback,date`. You can find more from the [sample CSV file](docs/sample_data.csv). 
+1. The S3 data event will trigger a step function. You can find more in the [Workflow Orchestration session](#workflow-orchestration) below.
+1. The Lambda function customer-service-dev-InvokeBedrockAndSave in step function will extract the feedback from CSV, invoke the Amazon Bedrock LLM to categorize them. Please find more in the [LLM and Prompt Engineering session below](#llm-and-prompt-engineering).
 1. And then save the result to RDS database.
-1. You can then configure the Amazon Quicksight to visualize the results in RDS database. Please find more in the Visualization session below.
+1. You can then configure the Amazon Quicksight to visualize the results in RDS database. Please find more in the [Visualization session](#visualization) below.
 1. You can see the chart dashboard of Amazon Quicksight.
 
 
@@ -29,7 +29,7 @@ This project utilizes AWS Step Functions to orchestrate the end-to-end workflow,
 
 
 #### LLM and Prompt Engineering
-Amazon Bedrock, a fully managed service that offers a choice of high-performing foundation models, is used to invoke LLMs in this project. Prompt engineering techniques are employed to craft effective prompts for specific tasks. Following is the prompt used in the Lambda function customer-service-dev-InvokeBedrockAndSave. Please feel free to modify according to your need.
+Amazon Bedrock, a fully managed service that offers a choice of high-performing foundation models, is used to invoke LLMs in this project. Prompt engineering techniques are employed to craft effective prompts for specific tasks. Following is the prompt used in the Lambda function `customer-service-dev-InvokeBedrockAndSave`. Please feel free to modify according to your need.
 
 ```
 You are tasked with selecting an appropriate tag from the given lists based on user feedback enclosed within the `<feedback>` XML tag.
