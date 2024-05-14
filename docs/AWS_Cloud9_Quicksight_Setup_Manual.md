@@ -1,20 +1,18 @@
-## GitHub Repository: Prototype Deployment Guide
-This is for data visualization in Quicksight.
+## GitHub Repository: Result Visualization Guide
+This is for result visualization in Quicksight.
 
 #### Prerequisites
 Please refer to [CDK installation guide](AWS_Cloud9_CDK_Deployment_Manual.md) for the installation guidance.
 
-#### Quicksight Configuration
+#### Quicksight Configuration and deployment
 
-- Quicksight Set secret manager
+- Quicksight Set secret manager  
 Choose your user name on the application bar and then choose Manage QuickSight. Go to security and permissions tab, select the secret we create for the database connection.
 
 ![Quicksight Setting for secret](quicksight_setting.png "How to set the secrets in Quicksight")
 
-- Change the options to enable VpcConnection and DataSource
-
-
-open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource`. In Cloud9 settings, you need to remove the “.*” in the Hidden File Pattern to view the file `.projenrc.py` in Cloud9 file tree.
+- Change the options to enable VpcConnection and DataSource  
+Open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource` to `True`. In Cloud9 settings, you need to remove the “.*” in the Hidden File Pattern to view the file `.projenrc.py` in Cloud9 file tree.
 
 ![Cloud9 Settings for hidden files](Cloud9_reveal_hidden_files_settings.png "How to reveal the hidden files in Cloud9")
 
@@ -30,11 +28,12 @@ cdk deploy
 
 #### Create Data Source and Tables in Quicksight
 
-- Data Preparation - Creating a Dataset
+- Data Preparation - Creating a Dataset  
 Find the RDS Database Secrets in CloudFormation:
 ![CloudFormation RDS credential](./CDK_installed_secrets_in_CloudFormation.png "CloudFormation RDS credential")
 Find the RDS Database Secrets values in AWS Secrets Manager:
 ![CloudFormation RDS credential value](./CDK_installed_secrets_in_CloudFormation2.png "CloudFormation RDS credential value")
+
 
 From the left navigation bar, select Datasets, click New dataset:
 ![Quicksight Creating a Dataset](./quicksight_create_dataset2.png "Quicksight Creating a Dataset")
@@ -59,7 +58,7 @@ WHERE x.rn = 1
 
 ![Quicksight publish data ](./quicksight_create_dataset6.png "Quicksight publish data ")
 
-- Data Visualization
+- Data Visualization  
 You can create new analysis:
 ![Quicksight create analysis ](./quicksight_create_analysis.png "Quicksight create analysis ")
 

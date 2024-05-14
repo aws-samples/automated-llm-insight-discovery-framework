@@ -1,4 +1,4 @@
-## GitHub Repository: Prototype Deployment Guide
+## GitHub Repository: Deployment Guide
 Welcome to the GitHub repository for our prototype project. This guide provides comprehensive instructions for deploying the prototype, setting up a deployment environment, and integrating AWS services to facilitate the deployment and operational processes.
 
 
@@ -101,7 +101,7 @@ You will get a response message if every works
 
 This Lambda function drops all existing tables and create new tables. We highly recommend that you modify the lambda_handler function immediately to prevent accidentally removing your data in RDS.
 
-### Upload the sample_data.csv and testing the end to end workflow
+### Upload the sample_data.csv to test the end to end workflow
 
 - Get the S3 bucket name
 
@@ -109,9 +109,9 @@ Go to CloudFormation stack customer-service-dev, find the value of key ResourceD
 
 ![S3 bucket name in CloudFormation output](CDK_installed_S3_bucket_in_CloudFormation.png "S3 bucket name")
 
-- Upload [sample_data.csv](sample_data.csv) to the bucket
+- Upload [sample_data.csv](sample_data.csv) to the bucket to trigger the end to end workflow
 
-- Continue in the [Quicksight Setup](./AWS_Cloud9_Quicksight_Setup_Manual.md) to visualize the result.
+- Continue in the [Data Visualization](./AWS_Cloud9_Quicksight_Setup_Manual.md) to visualize the result.
 
 
 ### TroubleShooting

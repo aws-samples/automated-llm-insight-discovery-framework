@@ -36,7 +36,7 @@
     "Map State": {
       "Type": "Map",
       "ResultPath": "$.mapOutput",
-      "Next": "Get Extra Tag",
+      "Next": "Create new tags",
       "Catch": [
         {
           "ErrorEquals": [
@@ -99,7 +99,7 @@
         }
       }
     },
-    "Get Extra Tag": {
+    "Create new tags": {
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "OutputPath": "$.Payload",
