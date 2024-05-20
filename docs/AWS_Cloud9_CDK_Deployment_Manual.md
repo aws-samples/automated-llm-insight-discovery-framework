@@ -132,6 +132,12 @@ Go to CloudFormation stack customer-service-dev, find the value of key ResourceD
 
 - Continue in the [Data Visualization](./AWS_Cloud9_Quicksight_Setup_Manual.md) to visualize the result.
 
+### Clean up
+
+If you want to delete all stacks created by this CDK app, you can empty the S3 bucket, and then delete the stack `customer-service-dev` in CloudFormation or run the command below in your Cloud9 project path:
+```
+cdk destroy customer-service-dev
+```
 
 ### TroubleShooting
 
