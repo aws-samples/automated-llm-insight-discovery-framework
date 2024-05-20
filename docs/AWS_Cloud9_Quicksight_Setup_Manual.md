@@ -12,7 +12,7 @@ Choose your user name on the application bar and then choose Manage QuickSight. 
 ![Quicksight Setting for secret](quicksight_setting.png "How to set the secrets in Quicksight")
 
 - Change the options to enable VpcConnection and DataSource  
-Open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource` to `True`. In Cloud9 settings, you need to remove the “.*” in the Hidden File Pattern to view the file `.projenrc.py` in Cloud9 file tree.
+Open file `.projenrc.py` and modify the option for `create_quicksight_vpc_rds_datasource` to `True`. In Cloud9 settings, you need to show hidden files to view the file `.projenrc.py` in Cloud9 file tree.
 
 ![Cloud9 Settings for hidden files](Cloud9_reveal_hidden_files_settings.png "How to reveal the hidden files in Cloud9")
 
@@ -28,17 +28,24 @@ cdk deploy
 
 #### Create Data Source and Tables in Quicksight
 
-- Data Preparation - Creating a Dataset  
-Find the RDS Database Secrets in CloudFormation:
-![CloudFormation RDS credential](./CDK_installed_secrets_in_CloudFormation.png "CloudFormation RDS credential")
-Find the RDS Database Secrets values in AWS Secrets Manager:
-![CloudFormation RDS credential value](./CDK_installed_secrets_in_CloudFormation2.png "CloudFormation RDS credential value")
+- Data Preparation - Share data source to yourself
 
+Manage QuickSight. Go to Manage Assets. and choose Data sources to share to yourself:
+![Share data sources](./quicksight_share_datasource.png "Share data sources")
+
+![Share data sources 2](./quicksight_share_datasource2.png "Share data sources 2")
+
+
+- Data Preparation - Creating a Dataset 
 
 From the left navigation bar, select Datasets, click New dataset:
 ![Quicksight Creating a Dataset](./quicksight_create_dataset2.png "Quicksight Creating a Dataset")
 
-![Quicksight Creating a new Dataset](./quicksight_create_dataset3.png "Quicksight Creating a new Dataset")
+You shall see the existing data sources shared in last step.
+![Share data sources 3](./quicksight_create_dataset3.png "Share data sources 3")
+
+Click it, and you should see the page as below. Click the "Create dataset" button.
+![Quicksight Creating a Dataset](./quicksight_create_dataset.png "Quicksight Creating a Dataset")
 
 Use custom SQL and Edit/Preview data:
 ![Quicksight Use custom SQL](./quicksight_create_dataset4.png "Quicksight Use custom SQL")
