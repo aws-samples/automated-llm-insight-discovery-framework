@@ -69,6 +69,10 @@ Please refer to [installation manual for workflow automation](docs/AWS_Cloud9_CD
 
 Please refer to [installation manual for data visualization](docs/AWS_Cloud9_Quicksight_Setup_Manual.md)
 
+#### Customization for your own use case
+
+Please refer to [Framework customization](docs/customization.md)
+
 
 ## Disclaimer: Use of Prompt Engineering Templates
 
