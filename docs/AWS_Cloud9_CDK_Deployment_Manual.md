@@ -88,7 +88,7 @@ cdk deploy
 ```
 
 - RDS Initialization  
-Go to lambda console and find the function named  ***-InitDbScript, click the Test button
+Go to lambda console and find the function named  ***-InitDbScript, and test the function to run it.
 
 You will get a response message if every works
 
