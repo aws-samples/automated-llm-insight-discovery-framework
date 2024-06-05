@@ -26,9 +26,9 @@ Before beginning the deployment, ensure you meet the following prerequisites:
 - Bedrock Model Setting: Verify your Bedrock model settings to ensure compatibility with the deployment.
 
 - Setting Up AWS Quicksight: For visualizing data and creating reports with AWS Quicksight, follow these steps:
-  - Sign up for AWS Quicksight by following the guide here.
+  - Sign up for AWS Quicksight.
   - Navigate to Manage QuickSight in the Quicksight console, then select Security and Permissions.
-  - Verify that the two default roles required by the Quicksight system are present in the IAM console.
+  - Verify that the two default roles (`aws-quicksight-service-role-v0` and `aws-quicksight-secretsmanager-role-v0`) required by the Quicksight system are present in the IAM console.
 
 
 #### Setting Up Cloud9 as Deployment Environment
