@@ -143,14 +143,14 @@ cdk destroy customer-service-dev
 
 1. Deployment in other region
 
-AWS Lambda layers ARN can vary by region, and for the purpose of this proof of concept (POC), we are utilizing a layer that includes the pandas library.
+AWS Lambda layers ARN can vary by region, we are utilizing a layer that includes the pandas library.
 
 For example for us-west-2, you need to use 
 ```python
 arn:aws:lambda:us-west-2:336392948345:layer:AWSSDKPandas-Python312:6
 ```
 
-please open the file `.projenrc.py` and modify the parameter  `sdk_pandas_layer` 
+please open the file `.projenrc.py` and modify the parameter `sdk_pandas_layer` 
 
 Please check your region here. https://aws-sdk-pandas.readthedocs.io/en/stable/layers.html
 
