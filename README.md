@@ -29,7 +29,7 @@ This project utilizes AWS Step Functions to orchestrate the end-to-end workflow,
 
 
 #### LLM and Prompt Engineering
-Amazon Bedrock, a fully managed service that offers a choice of high-performing foundation models, is used to invoke LLMs in this project. Prompt engineering techniques are employed to craft effective prompts for specific tasks. Following is the prompt used in the Lambda function `customer-service-dev-InvokeBedrockAndSave`. Please feel free to modify according to your need.
+Amazon Bedrock, a fully managed service that offers a choice of high-performing foundation models, is used to invoke LLMs in this project. Prompt engineering techniques are employed to craft effective prompts for specific tasks. Following is the prompt used in the Lambda function `customer-service-dev-InvokeBedrockAndSave`. Please feel free to modify [prompt.py](auto_tag/lambdas/invoke_bedrock_and_save/utils/prompt.py) according to your need.
 
 ```
 You are tasked with selecting an appropriate tag from the given lists based on user feedback enclosed within the `<feedback>` XML tag.
@@ -52,7 +52,7 @@ You are tasked with selecting an appropriate tag from the given lists based on u
 
 ```
 
-This framework stores the pre-defined tags in RDS, and initializes it in Lambda function inin_db_script. After downloading the framework, you can update your own pre-defined tags in [default_categories.json](auto_tag/lambdas/init_db_script/default_categories.json) file. Please update this file before you run `cdk deploy` deployment command. 
+This framework stores the pre-defined tags in RDS table `customer_feedback_category`, and initializes it in Lambda function inin_db_script. After downloading the framework, you can update your own pre-defined tags in [default_categories.json](auto_tag/lambdas/init_db_script/default_categories.json) file. Please update this file before you run `cdk deploy` deployment command. 
 
 #### Visualization
 Amazon QuickSight, a cloud-powered business analytics service, is used to visualize the insights extracted from the processed data. Refer to the Visualization documentation for more details [the Visualization documentation for more details](docs/AWS_Cloud9_Quicksight_Setup_Manual.md).
