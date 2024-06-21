@@ -26,9 +26,9 @@ Before beginning the deployment, ensure you meet the following prerequisites:
 - Bedrock Model Setting: Verify your Bedrock model settings to ensure compatibility with the deployment.
 
 - Setting Up AWS Quicksight: For visualizing data and creating reports with AWS Quicksight, follow these steps:
-  - Sign up for AWS Quicksight by following the guide here.
+  - Sign up for AWS Quicksight.
   - Navigate to Manage QuickSight in the Quicksight console, then select Security and Permissions.
-  - Verify that the two default roles required by the Quicksight system are present in the IAM console.
+  - Verify that the two default roles (`aws-quicksight-service-role-v0` and `aws-quicksight-secretsmanager-role-v0`) required by the Quicksight system are present in the IAM console.
 
 
 #### Setting Up Cloud9 as Deployment Environment
@@ -88,7 +88,7 @@ cdk deploy
 ```
 
 - RDS Initialization  
-Go to lambda console and find the function named  ***-InitDbScript, click the Test button
+Go to lambda console and find the function named  ***-InitDbScript, and test the function to run it.
 
 You will get a response message if every works
 
@@ -145,14 +145,14 @@ cdk destroy customer-service-dev
 
 1. Deployment in other region
 
-AWS Lambda layers ARN can vary by region, and for the purpose of this proof of concept (POC), we are utilizing a layer that includes the pandas library.
+AWS Lambda layers ARN can vary by region, we are utilizing a layer that includes the pandas library.
 
 For example for us-west-2, you need to use 
 ```python
 arn:aws:lambda:us-west-2:336392948345:layer:AWSSDKPandas-Python312:6
 ```
 
-please open the file `.projenrc.py` and modify the parameter  `sdk_pandas_layer` 
+please open the file `.projenrc.py` and modify the parameter `sdk_pandas_layer` 
 
 Please check your region here. https://aws-sdk-pandas.readthedocs.io/en/stable/layers.html
 
