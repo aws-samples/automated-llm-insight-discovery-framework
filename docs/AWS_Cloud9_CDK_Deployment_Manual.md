@@ -120,7 +120,7 @@ CREATE TABLE customer_feedback (
     );
 ```
 
-This framework also stores the pre-defined tags in RDS table `customer_feedback_category`, and initializes it in Lambda function inin_db_script. After downloading the framework, you can update your own pre-defined tags in [default_categories.json](../auto_tag/lambdas/init_db_script/default_categories.json) file. Please update this file before you run the Lambda function. 
+This framework also stores the pre-defined tags in RDS table `customer_feedback_category`, and initializes it in Lambda function inin_db_script. After downloading the framework, you can update your own pre-defined tags in [default_categories.json](../auto_tag/lambdas/init_db_script/default_categories.json) file. Please update this file before you run the Lambda function. After you run the Lambda function, you can modify the RDS table yourself.
 
 ### Upload the sample_data.csv to test the end to end workflow
 
