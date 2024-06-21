@@ -52,6 +52,8 @@ You are tasked with selecting an appropriate tag from the given lists based on u
 
 ```
 
+This framework stores the pre-defined tags in RDS, and initializes it in Lambda function inin_db_script. After downloading the framework, you can update your own pre-defined tags in [default_categories.json](auto_tag/lambdas/init_db_script/default_categories.json) file. Please update this file before you run `cdk deploy` deployment command. 
+
 #### Visualization
 Amazon QuickSight, a cloud-powered business analytics service, is used to visualize the insights extracted from the processed data. Refer to the Visualization documentation for more details [the Visualization documentation for more details](docs/AWS_Cloud9_Quicksight_Setup_Manual.md).
 
