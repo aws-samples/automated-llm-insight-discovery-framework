@@ -1,35 +1,10 @@
-# Automated LLM Insight Discovery Framework
+# Automated LLM Insight Discovery Framework with multiple tags
 
-LLMs have revolutionized the way we interact with and process natural language. With their ability to understand, generate, and analyze text, LLMs offer a wide range of possibilities across various domains and industries. This project explores how LLMs can be integrated into enterprise applications to harness their generative capabilities and drive better decision-making.
-
-## Key use-case scenario and components
-
-- **Customer Feedback Categorization and Sentiment Classification**: Analyze customer comments and reviews to extract specific aspects and determine sentiment, enabling data-driven improvements in customer experience.
-- **Email Categorization for Customer Service**: Automatically categorize customer emails into predefined categories for efficient routing to appropriate departments or teams, improving response times and customer satisfaction.
-- **Web Data Analysis for Product Information Extraction**: Extract key product details from e-commerce websites, such as titles, pricing, and descriptions, to facilitate accurate data management and analysis.
-
-## Architecture and data flow
-
-Following is the architecture
-![Architecture](docs/LLM_Auto_Tag_architeccture.png)
-
-The data flow is as below:
-1. User uploads CSV file of user feedback to S3 bucket, where the default CSV file format is `product_name,store,id,stars,title,feedback,date`. You can find more from the [sample CSV file](docs/sample_data.csv). 
-1. The S3 data event will trigger a step function. You can find more in the [Workflow Orchestration session](#workflow-orchestration) below.
-1. The Lambda function customer-service-dev-InvokeBedrockAndSave in step function will extract the feedback from CSV, invoke the Amazon Bedrock LLM to categorize them. Please find more in the [LLM and Prompt Engineering session below](#llm-and-prompt-engineering).
-1. And then save the result to RDS database. The RDS database has table `customer_feedback` with columns `id,product_name,store,ref_id,stars,title,feedback,label_llm,create_date,last_updated_time,label_post_processing,label_correction,execution_id`. 
-1. User can then configure the Amazon Quicksight to visualize the results in RDS database. Please find more in the [Visualization session](#visualization) below.
-1. User can view the chart dashboard of Amazon Quicksight.
-
-
-#### Workflow Orchestration
-This project utilizes AWS Step Functions to orchestrate the end-to-end workflow, including data preprocessing, LLM inference, post-processing, and user notification. For more details, refer to [the Workflow Orchestration documentation](docs/AWS_Cloud9_CDK_Deployment_Manual.md).
-
-![Step Function Execution](docs/stepfunction.png)
+The main branch will assign only 1 tag to feedback, while this branch will assign multiple tags to a feedback.
 
 
 #### LLM and Prompt Engineering
-Amazon Bedrock, a fully managed service that offers a choice of high-performing foundation models, is used to invoke LLMs in this project. Prompt engineering techniques are employed to craft effective prompts for specific tasks. Following is the prompt used in the Lambda function `customer-service-dev-InvokeBedrockAndSave`. Please feel free to modify [prompt.py](auto_tag/lambdas/invoke_bedrock_and_save/utils/prompt.py) according to your need.
+Following is the prompt used in the Lambda function `customer-service-dev-InvokeBedrockAndSave`. Please feel free to modify [prompt.py](auto_tag/lambdas/invoke_bedrock_and_save/utils/prompt.py) according to your need.
 
 ```
 You are tasked with selecting an appropriate tag from the given lists based on user feedback enclosed within the `<feedback>` XML tag.
@@ -47,33 +22,10 @@ You are tasked with selecting an appropriate tag from the given lists based on u
         $feedback
         </feedback>
 
-        Please choose only one from tag list and response to the user’s questions within <tag></tag> tags. If none of the tags above are suitable for the feedback or information is not enough, return "unknown". No explanation is required. No need to echo tag list and feedback. No need to echo
-        feedback.
+        Please choose most relavant tags (at most 3) from tag list and response to the user’s questions within <tag></tag> tags, delimitered by comma ",". If none of the tags above are suitable for the feedback or information is not enough, return "unknown". No explanation is required. No need to echo tag list and feedback. No need to echo feedback.
 
 ```
 
-This framework stores the pre-defined tags in RDS table `customer_feedback_category`, and initializes it in Lambda function inin_db_script. After downloading the framework, you can update your own pre-defined tags in [default_categories.json](auto_tag/lambdas/init_db_script/default_categories.json) file. Please update this file before you run `cdk deploy` deployment command. 
-
-#### Visualization
-Amazon QuickSight, a cloud-powered business analytics service, is used to visualize the insights extracted from the processed data. Refer to the Visualization documentation for more details [the Visualization documentation for more details](docs/AWS_Cloud9_Quicksight_Setup_Manual.md).
-
-![QuickSight illustration](docs/quicksight_category.png)
-
-
-## Getting Started
-
-
-#### Installation for workflow automation pipeline
-Please refer to [installation manual for workflow automation](docs/AWS_Cloud9_CDK_Deployment_Manual.md)
-
-
-#### Visualization in Amazon Quicksight
-
-Please refer to [installation manual for data visualization](docs/AWS_Cloud9_Quicksight_Setup_Manual.md)
-
-#### Customization for your own use case
-
-Please refer to [Framework customization](docs/customization.md)
 
 
 ## Disclaimer: Use of Prompt Engineering Templates
