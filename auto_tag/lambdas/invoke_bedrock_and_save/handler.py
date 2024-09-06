@@ -188,7 +188,8 @@ def lambda_handler(event, context):
                         raise ValueError("Invalid 'feedback' in event item.")
                     feedback_title = item.get("title", "")
                     result = get_tag_from_model(bedrock_runtime, feedback_title, feedback_comment, categories)
-                    tags= parse_content(result)
+                    tags = result
+                    
                     
                     # customer provide a timestamp format 2024-01-22T23:31:48 in date field
                     timestamp_str = item.get("date", None)
@@ -201,9 +202,8 @@ def lambda_handler(event, context):
                     
                     temp = {
                         "feedback": feedback_comment,
-                        "label_llm": tags,
+                        "tags": "",
                         "execution_id": execution_name,
-                        "label_post_processing": "",
                         "stars": item.get("stars", ""),
                         "store": item.get("store", ""),
                         "title": item.get("title", ""),
@@ -214,8 +214,15 @@ def lambda_handler(event, context):
                     
                     # If the tag is not in the pre-defined categories list and not unknown then use semantic search
                     # to find the most similar item from the database.
-                    if tags not in categories and tags != TAG_UNKNOWN:
-                        temp["label_post_processing"] = search_most_similar_item_from_db(cursor, tags)
+                    updated_tags = []
+                    for tag in tags:
+                        if (tag not in categories) and tag != TAG_UNKNOWN:
+                            updated_tag = search_most_similar_item_from_db(cursor, tags[0])
+                        elif (tag in categories):
+                            updated_tags.append(tag)
+                    temp["tags"] = ",".join(updated_tags)
+                    logger.info("updated tags:")
+                    logger.info(temp["tags"] )
                     
                     data.append(temp)
                     sub_status["success"] += 1
@@ -226,52 +233,44 @@ def lambda_handler(event, context):
             logger.info("Batch data to insert: %s", json.dumps(data, indent=2))
             
             if len(data) > 0:
-                success, _ = save_data_to_rds_in_batch(rds_conn, data)
+                success = save_data_to_rds_in_batch(rds_conn, data)
                 if not success:
                     sub_status["failure"] = sub_status["total"]
                     sub_status["success"] = 0
-            
-            return sub_status
+
+def save_data_to_rds_in_batch(rds_conn, data):
+    with rds_conn.cursor() as cursor:
+        try:
+            for item in data:
+                # Insert feedback data
+                feedback_insert_query = """
+                    INSERT INTO customer_feedback (feedback, execution_id, stars, store, title, create_date, product_name, ref_id)
+                    VALUES %s RETURNING id
+                """
+                feedback_data = [(item['feedback'], item['execution_id'], item['stars'], item['store'], item['title'], item['create_date'], item['product_name'], item['ref_id'])]
+                feedback_ids = execute_values(cursor, feedback_insert_query, feedback_data, fetch=True)
+
+                # Insert tags
+                feedback_id = feedback_ids[0]
+                logger.info("created feedback id " + str(feedback_id))
+                logger.info("input tags " + item["tags"])
+                tags = item["tags"].split(",")
+                for tag in tags:
+                    tag_insert_query = """
+                        INSERT INTO feedback_tags (feedback_id, tag)
+                        VALUES %s
+                    """
+                    tag_data = [(feedback_id, tag) ]
+                    execute_values(cursor, tag_insert_query, tag_data)
+
+                rds_conn.commit()
+            return True
+        except Exception as e:
+            logger.error(f"Error inserting data: {e}")
+            rds_conn.rollback()
+            return False
 
 
-def save_data_to_rds_in_batch(rds_conn: psycopg2.connect, data: list):
-    """
-    Save data to RDS in batch.
-
-    Args:
-        rds_conn: The RDS connection.
-        data: The data to save.
-    """
-    try:
-        columns = list(data[0].keys())
-        statement = create_insert_query("customer_feedback", columns)
-        
-        values = [[row[column] for column in columns] for row in data]
-        
-        with rds_conn.cursor(cursor_factory=DictCursor) as batch_cursor:
-            execute_values(batch_cursor, statement, values)
-        rds_conn.commit()
-        
-        logger.info(f"Data saved to RDS in batch. Data size: {len(data)}")
-        
-        return True, None
-    except (DataError, IntegrityError) as e:
-        error_message = f"A data integrity error occurred: {e}"
-        logger.error(error_message)
-        # Handle data-specific errors, e.g., rollback transaction, cleanup, etc.
-        rds_conn.rollback()
-        return False, error_message
-    except OperationalError as e:
-        error_message = f"An operational error occurred: {e}"
-        logger.error(error_message)
-        # Handle the operational error, e.g., retry the connection
-        return False, error_message
-    except Exception as e:
-        error_message = f"An unexpected error occurred: {e}"
-        traceback.print_exc()  # Print the traceback for debugging purposes
-        logger.error(error_message)
-        # Handle the unexpected error
-        return False, error_message
 
 
 def search_most_similar_item_from_db(cursor, not_exist_tag: str) -> str:
@@ -310,8 +309,12 @@ def search_most_similar_item_from_db(cursor, not_exist_tag: str) -> str:
         row = cursor.fetchone()
         
         if row:
-            logger.info("Most similar term found for '%s': %s", not_exist_tag, row[0])
-            return row[0]
+            logger.info("row: ")
+            for i in row:
+                logger.info(i)
+                
+            logger.info("Most similar term found for '%s': %s", not_exist_tag, row[1])
+            return row[1]
         else:
             logger.info("No similar term found for '%s'", not_exist_tag)
             return TAG_UNKNOWN
@@ -343,5 +346,6 @@ def parse_content(xml_string):
         return result.group(1) if result else default
     
     tag_content = search_tag("tag", TAG_UNKNOWN)
+    print(tag_content)
     
     return tag_content

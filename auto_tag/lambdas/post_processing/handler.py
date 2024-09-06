@@ -104,10 +104,11 @@ def get_top_three_categories(execution_id_value):
 
     # SQL query to get the top 3 categories for a specific execution ID
     sql_query = """
-    SELECT label_llm, COUNT(*) as category_count
-    FROM customer_feedback
-    WHERE execution_id = %s
-    GROUP BY label_llm
+    SELECT ft.tag, COUNT(*) as category_count
+    FROM customer_feedback cf
+    JOIN feedback_tags ft ON cf.id = ft.feedback_id
+    WHERE cf.execution_id = %s
+    GROUP BY ft.tag
     ORDER BY category_count DESC
     LIMIT 3;
     """

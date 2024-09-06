@@ -114,8 +114,6 @@ CREATE TABLE customer_feedback (
         label_llm VARCHAR(255),
         create_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         last_updated_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-        label_post_processing VARCHAR(255),
-        label_correction VARCHAR(255),
         execution_id TEXT
     );
 ```

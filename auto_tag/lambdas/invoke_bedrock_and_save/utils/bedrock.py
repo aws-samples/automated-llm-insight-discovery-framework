@@ -25,7 +25,7 @@ from .prompt import TAG_PROMPT
 
 def get_tag_from_model(bedrock_runtime: boto3.client, title: str, feedback: str, tag_categories: list):
     """
-    Call Bedrock function to get the tag through prompt
+    Call Bedrock function to get the tags through prompt
 
     Args:
         bedrock_runtime: boto3 client for bedrock runtime
@@ -33,7 +33,7 @@ def get_tag_from_model(bedrock_runtime: boto3.client, title: str, feedback: str,
         feedback: customer feedback content
 
     Returns:
-        str: Large language model response
+        list: List of tags from the large language model response
 
     """
 
@@ -84,9 +84,14 @@ def get_tag_from_model(bedrock_runtime: boto3.client, title: str, feedback: str,
     )
 
     response_body = json.loads(response.get("body").read())
+    print(response_body["content"][0])
 
     if "claude-3" in chat_model and "content" in response_body and response_body["content"]:
-        return response_body["content"][0]["text"]
+        #tags = response_body["content"][0]["text"].strip("<tag>").strip("</tag>").split(",")
+        tags = response_body["content"][0]["text"][5:-6].split(",")
+    else:
+        #tags = response_body.get("completion", "").strip("<tag>").strip("</tag>").split(",")
+        tags = response_body["content"][0]["text"][5:-6].split(",")
 
-    # Default return, assuming 'completion' is always present in the response
-    return response_body.get("completion")
+    # Clean and return the list of tags
+    return [tag.strip() for tag in tags if tag.strip()]

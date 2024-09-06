@@ -321,24 +321,40 @@ def update_customer_feedback(df):
 
         with rds_conn.cursor() as cursor:
 
+            # Delete existing tags for the feedback in the feedback_tags table
+            delete_query = """
+                DELETE FROM feedback_tags
+                WHERE feedback_id IN %s;
+            """
+            feedback_ids = tuple(df['id'].tolist())
+            cursor.execute(delete_query, (feedback_ids,))
+
+            # Insert new tags into the feedback_tags table
+            insert_query = """
+                INSERT INTO feedback_tags (feedback_id, tag)
+                VALUES %s;
+            """
+            insert_values = []
+            for index, row in df.iterrows():
+                feedback_id = row['id']
+                tags = [tag.strip() for tag in row['label_correction'].split(',')]
+                for tag in tags:
+                    insert_values.append((feedback_id, tag))
+
+            execute_values(cursor, insert_query, insert_values, template=None, page_size=100)
+
+            # Update the label_correction column in the customer_feedback table
             update_query = """
                 UPDATE customer_feedback
-                SET label_correction = data.label_correction
-                FROM (VALUES %s) AS data(id, label_correction)
-                WHERE customer_feedback.id = data.id;
+                SET label_correction = %s
+                WHERE id = %s;
             """
+            update_values = [(row['label_correction'], row['id']) for index, row in df.iterrows()]
+            cursor.executemany(update_query, update_values)
 
-            # Prepare the data for batch update
-            update_values = [
-                (row["id"], row["label_correction"]) for index, row in df.iterrows()
-            ]
-
-            # Execute the batch update
-            execute_values(cursor, update_query, update_values, template=None, page_size=100)
-
-            # Get the number of rows updated
-            rows_updated = cursor.rowcount
+            # Get the number of feedback records updated
+            rows_updated = len(df)
 
             rds_conn.commit()
 
-    return f"{rows_updated} rows get updated"
+    return f"{rows_updated} feedback records updated with new tags"

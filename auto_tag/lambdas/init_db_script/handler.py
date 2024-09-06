@@ -19,12 +19,9 @@ product information, and sentiment analysis:
     - `stars`: A string representing the star rating given in the feedback.
     - `title`: The title of the feedback entry.
     - `feedback`: The actual text of the customer's feedback in English, defined as NOT NULL.
-    - `label_llm`: A label assigned by a language model.
     - `create_date`: The timestamp when the feedback was created, with a default value of the current time.
     - `execution_id`: The state machine execution ID that triggered the feedback creation.
     - `last_updated_time`: The timestamp of the last update made to the record (auto updated).
-    - `label_post_processing`: For any labels that are incorrectly assigned or not categorized according to the predefined categories, the post-processing step will attempt to map them to the correct category based on sentence similarity.
-    - `label_correction`: A field that records the label manually corrected by a human.
     
     
 The `customer_feedback_category` table is designed to handle categories and their vector representations:
@@ -83,12 +80,18 @@ FEEDBACK_CREATE_TABLE_STATEMENT = """
         stars VARCHAR(5),
         title VARCHAR(255),
         feedback TEXT NOT NULL,
-        label_llm VARCHAR(255),
         create_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         last_updated_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-        label_post_processing VARCHAR(255),
-        label_correction VARCHAR(255),
         execution_id TEXT
+    );
+"""
+
+FEEDBACK_TAGS_CREATE_TABLE_STATEMENT = """
+    CREATE TABLE feedback_tags (
+        id SERIAL PRIMARY KEY,
+        feedback_id INTEGER,
+        tag VARCHAR(255),
+        FOREIGN KEY (feedback_id) REFERENCES customer_feedback(id) ON DELETE CASCADE
     );
 """
 
@@ -149,6 +152,11 @@ def lambda_handler(event, context):
     # create table
     print("Create table: CustomerFeedback")
     cursor.execute(FEEDBACK_CREATE_TABLE_STATEMENT)
+    rds_conn.commit()
+
+    # create feedback_tags table
+    print("Create table: FeedbackTags")
+    cursor.execute(FEEDBACK_TAGS_CREATE_TABLE_STATEMENT)
     rds_conn.commit()
 
     # create category table
