@@ -69,7 +69,7 @@ WHERE x.rn = 1
 You can create new analysis:
 ![Quicksight create analysis ](./quicksight_create_analysis.png "Quicksight create analysis ")
 
-Create a new calculated field to handle the integration logic of label_llm and label_post_processing.
+Create a new calculated field to handle the integration logic of label_llm.
 ![Quicksight create field ](./quicksight_create_calculated_field.png "Quicksight create field ")
 
 ![Quicksight create field 2](./quicksight_create_calculated_field2.png "Quicksight create field 2")
