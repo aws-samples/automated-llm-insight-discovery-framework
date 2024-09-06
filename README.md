@@ -9,7 +9,7 @@
 3. [Prerequisites](#prerequisites)
     - [Operating System](#operating-system)
     - [Third-party tools](#third-party-tools)
-    - [AWS account requirements](#aws-account-requirements
+    - [AWS account requirements](#aws-account-requirements)
     - [AWS cdk bootstrap](#aws-cdk-bootstrap)
 4. [Deployment Steps](#deployment-steps)
 5. [Deployment Validation](#deployment-validation)
