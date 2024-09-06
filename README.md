@@ -53,15 +53,16 @@ _We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/la
 ## Architecture and data flow
 
 Following is the architecture
-![Architecture](docs/LLM_Auto_Tag_architeccture.png)
+![Architecture](docs/LLM_Auto_Tag_architecture.png)
 
 The data flow is as below:
-1. User uploads CSV file of user feedback to S3 bucket, where the default CSV file format is `product_name,store,id,stars,title,feedback,date`. You can find more from the [sample CSV file](docs/sample_data.csv). 
-1. The S3 data event will trigger a step function. You can find more in the [Workflow Orchestration session](#workflow-orchestration) below.
-1. The Lambda function customer-service-dev-InvokeBedrockAndSave in step function will extract the feedback from CSV, invoke the Amazon Bedrock LLM to categorize them. Please find more in the [LLM and Prompt Engineering session below](#llm-and-prompt-engineering).
-1. And then save the result to RDS database. The RDS database has table `customer_feedback` with columns `id,product_name,store,ref_id,stars,title,feedback,label_llm,create_date,last_updated_time,label_post_processing,label_correction,execution_id`. 
-1. User can then configure the Amazon Quicksight to visualize the results in RDS database. Please find more in the [Visualization session](#visualization) below.
-1. User can view the chart dashboard of Amazon Quicksight.
+1. Business users upload csv file of user feedbacks to Amazon Simple Storage Service (Amazon S3) bucket. The default CSV file format is `product_name,store,id,stars,title,feedback,date`. You can find more from the [sample CSV file](docs/sample_data.csv). 
+1. The Amazon S3 data event of the uploaded files will trigger the step function through Amazon EventBridge. You can find more in the [Workflow Orchestration session](#workflow-orchestration) below.
+1. The AWS Lambda file validation function in the AWS Step Function will extract the feedback from csv, and validate the file. 
+1. AWS Step Function uses Map state to call Lambda categorize function for each feedback in the csv, in parallel. The Lambda categorize function will invoke the Amazon Bedrock LLM to categorize the feedback and save the result to Amazon Relational Database Service (Amazon RDS) database. Please find more in the [LLM and Prompt Engineering session below](#llm-and-prompt-engineering). The RDS database has table `customer_feedback` with columns `id,product_name,store,ref_id,stars,title,feedback,label_llm,create_date,last_updated_time,label_post_processing,label_correction,execution_id`. 
+1. If there is no right category for certain amount of feedbacks, the Lambda create new category function will create new category.
+1. At the end, AWS Step Function will publish the running result to Amazon Simple Notification Service (Amazon SNS) topic.  
+1. Configure the Amazon Quicksight to visualize the results in Amazon RDS database. Please find more in the [Visualization session](#visualization) below.
 
 
 #### Workflow Orchestration
