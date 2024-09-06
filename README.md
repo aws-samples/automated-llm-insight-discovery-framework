@@ -5,20 +5,20 @@
 
 1. [Overview](#overview)
     - [Cost](#cost)
-2. [Architecture and data flow](#architecture-and-data-flow)
-3. [Prerequisites](#prerequisites)
+    - [Architecture and data flow](#architecture-and-data-flow)
+2. [Prerequisites](#prerequisites)
     - [Operating System](#operating-system)
     - [Third-party tools](#third-party-tools)
     - [AWS account requirements](#aws-account-requirements)
     - [AWS cdk bootstrap](#aws-cdk-bootstrap)
-4. [Deployment Steps](#deployment-steps)
-5. [Deployment Validation](#deployment-validation)
-6. [Running the Guidance](#running-the-guidance)
-7. [Next Steps](#next-steps)
-8. [Cleanup](#cleanup)
-9. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations)
-10. [Notices](#notices)
-11. [License](#license)
+3. [Deployment Steps](#deployment-steps)
+4. [Deployment Validation](#deployment-validation)
+5. [Running the Guidance](#running-the-guidance)
+6. [Next Steps](#next-steps)
+7. [Cleanup](#cleanup)
+8. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations)
+9. [Notices](#notices)
+10. [License](#license)
 
 
 ## Overview
@@ -50,7 +50,7 @@ _We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/la
 | Amazon QuickSight | 1 author and 10 readers, 10G in-memory data store | $51.80/month |
 
 
-## Architecture and data flow
+### Architecture and data flow
 
 Following is the architecture
 ![Architecture](docs/LLM_Auto_Tag_architecture.png)
