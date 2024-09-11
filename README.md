@@ -46,7 +46,7 @@ _We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/la
 | AWS Lambda | 1 million requests per month | $0.41/month |
 | Amazon SNS Standard topics | 30 email notifications per month | $0.09/month |
 | Amazon RDS for MySQL | 1 Multi-AZ db.m5.large instance with 100 GB storage | $272.66/month |
-| Amazon Redcock | 1 billion input token, 100 million output token, use Claude 3 Sonnet | $450.00/month |
+| Amazon Bedrock | 1 billion input token, 100 million output token, use Claude 3 Sonnet | $450.00/month |
 | Amazon QuickSight | 1 author and 10 readers, 10G in-memory data store | $51.80/month |
 
 
