@@ -1,4 +1,4 @@
-## GitHub Repository: Result Visualization Guide
+## Insight Discovery Result Visualization Guide
 This is for result visualization in Quicksight.
 
 #### Prerequisites

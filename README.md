@@ -66,7 +66,7 @@ The data flow is as below:
 
 
 #### Workflow Orchestration
-This project utilizes AWS Step Functions to orchestrate the end-to-end workflow, including data preprocessing, LLM inference, post-processing, and user notification. For more details, refer to [the Workflow Orchestration documentation](docs/AWS_Cloud9_CDK_Deployment_Manual.md).
+This project utilizes AWS Step Functions to orchestrate the end-to-end workflow, including data preprocessing, LLM inference, post-processing, and user notification. 
 
 ![Step Function Execution](docs/stepfunction.png)
 
@@ -265,7 +265,7 @@ This framework also stores the pre-defined tags in RDS table `customer_feedback_
 
 Go to CloudFormation stack customer-service-dev, find the value of key ResourceDataBucketName in its output.
 
-- Upload [sample_data.csv](sample_data.csv) to the bucket to trigger the end to end workflow
+- Upload sample_data.csv to the bucket to trigger the end to end workflow
 
 
 ## Next Steps
