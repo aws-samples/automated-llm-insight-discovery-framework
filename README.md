@@ -269,8 +269,6 @@ Go to CloudFormation stack customer-service-dev, find the value of key ResourceD
 
 - Upload [sample_data.csv](sample_data.csv) to the bucket to trigger the end to end workflow
 
-- Continue in the [Data Visualization](./AWS_Cloud9_Quicksight_Setup_Manual.md) to visualize the result.
-
 
 ## Next Steps
 
