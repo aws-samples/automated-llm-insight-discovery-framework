@@ -265,8 +265,6 @@ This framework also stores the pre-defined tags in RDS table `customer_feedback_
 
 Go to CloudFormation stack customer-service-dev, find the value of key ResourceDataBucketName in its output.
 
-![S3 bucket name in CloudFormation output](CDK_installed_S3_bucket_in_CloudFormation.png "S3 bucket name")
-
 - Upload [sample_data.csv](sample_data.csv) to the bucket to trigger the end to end workflow
 
 
