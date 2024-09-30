@@ -56,13 +56,15 @@ Following is the architecture
 ![Architecture](docs/LLM_Auto_Tag_architecture.png)
 
 The data flow is as below:
-1. Business users upload csv file of user feedbacks to Amazon Simple Storage Service (Amazon S3) bucket. The default CSV file format is `product_name,store,id,stars,title,feedback,date`. You can find more from the [sample CSV file](docs/sample_data.csv). 
-1. The Amazon S3 data event of the uploaded files will trigger the step function through Amazon EventBridge. You can find more in the [Workflow Orchestration session](#workflow-orchestration) below.
-1. The AWS Lambda file validation function in the AWS Step Function will extract the feedback from csv, and validate the file. 
-1. AWS Step Function uses Map state to call Lambda categorize function for each feedback in the csv, in parallel. The Lambda categorize function will invoke the Amazon Bedrock LLM to categorize the feedback and save the result to Amazon Relational Database Service (Amazon RDS) database. Amazon RDS is encrypted using key from AWS Key Management Service (AWS KMS). Please find more in the [LLM and Prompt Engineering session below](#llm-and-prompt-engineering). The RDS database has table `customer_feedback` with columns `id,product_name,store,ref_id,stars,title,feedback,label_llm,create_date,last_updated_time,label_post_processing,label_correction,execution_id`. 
-1. If there is no right category for certain amount of feedbacks, the Lambda create new category function will create new category.
-1. At the end, AWS Step Function will publish the running result to Amazon Simple Notification Service (Amazon SNS) topic.  
-1. Configure the Amazon Quicksight to visualize the results in Amazon RDS database. Please find more in the [Visualization session](#visualization) below.
+1. Business users Upload user feedback (e.g., a CSV or JSON file) to Amazon Simple Storage Service (Amazon S3) bucket. If using CSV, the default CSV file format is `product_name,store,id,stars,title,feedback,date`. You can find more from the [sample CSV file](docs/sample_data.csv). 
+1. The Amazon S3 data event of the uploaded files triggers the AWS Step Functions through Amazon EventBridge.
+ You can find more in the [Workflow Orchestration session](#workflow-orchestration) below.
+1. An AWS Lambda function validates the uploaded file at the beginning of AWS Step Functions workflow. 
+1. AWS Step Functions uses a Map state to invoke Lambda functions for parallel LLM processing with Amazon Bedrock, saving results to encrypted Amazon Relational Database Service (Amazon RDS) using AWS Key Management Service (Amazon KMS). The RDS database has table `customer_feedback` with columns `id,product_name,store,ref_id,stars,title,feedback,label_llm,create_date,last_updated_time,label_post_processing,label_correction,execution_id`. 
+1. Amazon Bedrock takes the user-defined instruction prompt as a task, a feedback record as input, and generates expected insight analysis. Please find more in the [LLM and Prompt Engineering session below](#llm-and-prompt-engineering). 
+1. A Lambda function performs post-processing on the insight results, e.g., summarizing the statistics of input feedback and optionally suggesting new categories. 
+1. At the end, AWS Step Functions publishes the results to an Amazon Simple Notification Service (Amazon SNS) topic, which sends an email with the results to business users. 
+1. Configure the Amazon Quicksight to visualize the results in the Amazon RDS database.  Please find more in the [Visualization session](#visualization) below. 
 
 
 #### Workflow Orchestration
